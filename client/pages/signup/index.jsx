@@ -1,6 +1,7 @@
+import { useState, useContext, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState, useContext, useEffect } from 'react'
+import { Email, Lock, Person } from '@material-ui/icons/'
 
 import { SignUpContainer } from './styled'
 import { Button } from '../../components/Button'
@@ -47,63 +48,65 @@ export default function SignIn() {
 
   return (
     <SignUpContainer>
-      <div>
-        <form className='form-container' onSubmit={handleSubmit}>
-          <h2>Cadastro</h2>
-          <div className='form-field'>
+      <h1>Crie sua conta</h1>
+      <form onSubmit={handleSubmit}>
+        <section>
+          <div>
+            <Person />
             <input
-              label='Digite seu nome*'
               id='name'
+              placeholder='Seu Nome'
               name='name'
               value={name}
               onChange={handleChangeInput}
             />
           </div>
-          <div className='form-field'>
+          <div>
+            <Email />
             <input
-              label='Digite seu e-mail*'
               id='email'
+              placeholder='Seu E-mail'
               type='email'
               name='email'
               value={email}
               onChange={handleChangeInput}
             />
           </div>
-          <div className='form-field'>
+          <div>
+            <Lock />
             <input
-              label='Digite sua senha*'
               id='password'
+              placeholder='Sua senha'
               type='password'
               name='password'
               value={password}
               onChange={handleChangeInput}
             />
           </div>
-          <div className='form-field'>
+          <div>
+            <Lock />
             <input
-              label='Confirme sua senha*'
               id='cf_password'
+              placeholder='Confirme sua senha'
               type='password'
               name='cf_password'
               value={cf_password}
               onChange={handleChangeInput}
             />
           </div>
-          <div className='form-field'>
-            <Button type='submit'>Cadastrar</Button>
-          </div>
-          <div className='form-link'>
-            <p>
-              Já tem cadastro?
-              <span>
-                <Link href='/signin'>
-                  <a>clique aqui</a>
-                </Link>
-              </span>
-            </p>
-          </div>
-        </form>
-      </div>
+        </section>
+
+        <Button type='submit'>Cadastrar</Button>
+
+        <div className='form-link'>
+          <p>
+            Já tem cadastro?
+            <Link href='/signin'>
+              <a>entrar</a>
+            </Link>
+          </p>
+        </div>
+      </form>
     </SignUpContainer>
   )
 }

@@ -1,7 +1,8 @@
+import { useState, useContext, useEffect } from 'react'
 import Link from 'next/link'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/router'
-import { useState, useContext, useEffect } from 'react'
+import { Email, Lock } from '@material-ui/icons/'
 
 import { SignInContainer } from './styled'
 import { DataContext } from '../../context/globalState'
@@ -58,46 +59,44 @@ export default function SignIn() {
 
   return (
     <SignInContainer>
-      <div>
-        <form className='form-container' onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          <div className='form-field'>
+      <h1>Faça seu login na plataforma</h1>
+      <form onSubmit={handleSubmit}>
+        <section>
+          <div>
+            <Email />
             <input
-              label='Digite seu e-mail*'
-              name='email'
               id='email'
-              type='email'
+              placeholder='E-mail'
               name='email'
+              type='email'
               value={email}
               onChange={handleChangeInput}
             />
           </div>
-          <div className='form-field'>
+          <div>
+            <Lock />
             <input
-              label='Digite sua senha*'
               id='password'
+              placeholder='Senha'
               name='password'
               type='password'
-              name='password'
               value={password}
               onChange={handleChangeInput}
             />
           </div>
-          <div className='form-field'>
-            <Button type='submit'>Entrar</Button>
-          </div>
-          <div className='form-link'>
-            <p>
-              Não tem cadastro?
-              <span>
-                <Link href='/signup'>
-                  <a>clique aqui</a>
-                </Link>
-              </span>
-            </p>
-          </div>
-        </form>
-      </div>
+        </section>
+
+        <Button type='submit'>Entrar</Button>
+
+        <div className='form-link'>
+          <p>
+            Não tem cadastro?
+            <Link href='/signup'>
+              <a>Registre-se</a>
+            </Link>
+          </p>
+        </div>
+      </form>
     </SignInContainer>
   )
 }

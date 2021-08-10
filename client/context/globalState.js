@@ -17,6 +17,7 @@ export const DataProvider = ({ children }) => {
     const firstLogin = localStorage.getItem('firstLogin')
     if (firstLogin) {
       getData('user/refresh_token').then((res) => {
+        console.log(res)
         if (res.err) return localStorage.removeItem('firstLogin')
         dispatch({
           type: 'AUTH',

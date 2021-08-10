@@ -8,8 +8,8 @@ import { Notify } from '../components/Notify'
 export default function App({ Component, pageProps }) {
   return (
     <DataProvider>
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <Notify />
         <Component {...pageProps} />
       </ThemeProvider>
