@@ -6,7 +6,15 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'nunito',sans-serif;
-    background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.white};
+  }
+  button{
+    cursor: pointer;
+  }
+  a{
+    text-decoration: none;
+  }
+  li{
+    list-style: none;
   }
 `

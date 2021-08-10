@@ -1,5 +1,5 @@
 //import {} from './styled'
 
-export const Shop = () => {
+export const ListApp = () => {
   return <div>oi</div>
 }

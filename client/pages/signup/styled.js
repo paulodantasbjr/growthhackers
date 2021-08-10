@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-export const SignUpContainer = styled.div`
+export const SignUpContainer = styled.main`
+  background: ${({ theme }) => theme.colors.background};
   display: flex;
   gap: 2rem;
   flex-direction: column;
@@ -23,7 +24,6 @@ export const SignUpContainer = styled.div`
     flex-direction: column;
   }
   section {
-    background: ${({ theme }) => theme.colors.backgroundLight};
     display: grid;
     grid-auto-flow: row;
     gap: 10px;
@@ -31,6 +31,7 @@ export const SignUpContainer = styled.div`
     div {
       display: flex;
       align-items: center;
+      background: ${({ theme }) => theme.colors.background};
       border: 2px solid ${({ theme }) => theme.colors.backgroundLight};
       border-radius: 5px;
       padding: 0.5rem;
@@ -52,18 +53,17 @@ export const SignUpContainer = styled.div`
     p {
       font-size: 1rem;
       font-weight: 600;
-      background: ${({ theme }) => theme.colors.backgroundLight};
+
       color: ${({ theme }) => theme.colors.white};
     }
     a {
-      text-decoration: none;
       font-size: 1rem;
       font-weight: 600;
       color: ${({ theme }) => theme.colors.primary};
       opacity: 0.8;
       transition: opacity 0.2s ease 0s;
       margin-left: 0.2rem;
-      background: ${({ theme }) => theme.colors.backgroundLight};
+
       &:hover {
         opacity: 1;
       }

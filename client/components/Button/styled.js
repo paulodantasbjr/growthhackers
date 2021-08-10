@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const ButtonStyled = styled.button`
-  cursor: pointer;
   background: ${({ theme }) => theme.colors.primary};
   border-radius: 5px;
   border: 0px;
@@ -10,8 +9,8 @@ export const ButtonStyled = styled.button`
   padding: 1rem 3rem;
   font-size: 1rem;
   text-transform: uppercase;
-  transition: all 0.2s ease;
+  transition: all 0.4s ease-in-out;
   &:hover {
-    filter: brightness(0.7);
+    background: ${({ theme }) => theme.colors.secondary};
   }
 `
