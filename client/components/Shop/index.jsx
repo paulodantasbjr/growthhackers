@@ -1,5 +1,5 @@
-import {} from './styled'
+//import {} from './styled'
 
 export const Shop = () => {
-  return <h1>shop</h1>
+  return <div>oi</div>
 }

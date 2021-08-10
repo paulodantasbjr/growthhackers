@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState, useContext, useEffect } from 'react'
 
 import { SignInContainer } from './styled'
-import { DataContext } from '../../context/userContext/userState'
+import { DataContext } from '../../context/globalState'
 import { Button } from '../../components/Button'
 import { postData } from '../../utils/fetchData'
 
@@ -30,20 +30,20 @@ export default function SignIn() {
 
     const res = await postData('user/login', userData)
 
-    if (res.title == 'error')
-      return dispatch({ type: 'NOTIFY', payload: { error: res.msg } })
+    if (res.err)
+      return dispatch({ type: 'NOTIFY', payload: { error: res.err } })
 
     dispatch({ type: 'NOTIFY', payload: { success: res.msg } })
 
     dispatch({
       type: 'AUTH',
       payload: {
-        token: res.accesstoken,
+        token: res.access_token,
         user: res.user,
       },
     })
 
-    Cookie.set('refreshtoken', res.refreshtoken, {
+    Cookie.set('refreshtoken', res.refresh_token, {
       path: 'user/refresh_token',
       expires: 7,
     })

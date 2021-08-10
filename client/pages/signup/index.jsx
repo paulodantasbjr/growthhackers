@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 
 import { SignUpContainer } from './styled'
 import { Button } from '../../components/Button'
-import { DataContext } from '../../context/userContext/userState'
+import { DataContext } from '../../context/globalState'
 import { postData } from '../../utils/fetchData'
 import { valid } from '../../utils/valid'
 
@@ -34,14 +34,11 @@ export default function SignIn() {
 
     const res = await postData('user/register', userData)
 
-    if (res.title == 'error')
-      return dispatch({ type: 'NOTIFY', payload: { error: res.msg } })
+    if (res.err)
+      return dispatch({ type: 'NOTIFY', payload: { error: res.err } })
 
-    router.push('signin')
-    return dispatch({
-      type: 'NOTIFY',
-      payload: { success: res.msg },
-    })
+    router.push('/')
+    return dispatch({ type: 'NOTIFY', payload: { success: res.msg } })
   }
 
   useEffect(() => {

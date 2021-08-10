@@ -1,87 +1,71 @@
 const Users = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const {
+  createAccessToken,
+  createRefreshToken,
+} = require('../utils/generateToken')
 
 const userCtrl = {
   //cria usuario
   register: async (req, res) => {
     try {
-      //recebe do browser os parametros
+      //pega os dados que foi digitado no front
       const { name, email, password } = req.body
 
-      //verifica no mongo se ja tem um user com esse email
+      //verifica se existe no banco alguem com o email
       const user = await Users.findOne({ email })
-      if (user)
-        return res.status(400).json({ msg: 'Email ja existe', title: 'error' })
+      if (user) return res.status(400).json({ err: 'Esse email ja existe.' })
 
-      //encript a senha
-      const passordHash = await bcrypt.hash(password, 10)
+      //cria o hash da senha
+      const passwordHash = await bcrypt.hash(password, 12)
 
-      //cria o user para salvar no banco sequindo os parametros do userModel
+      //cria o arquivo para salvar no banco
       const newUser = new Users({
         name,
         email,
-        password: passordHash,
+        password: passwordHash,
       })
-
-      //salva usuario
+      //sava no banco
       await newUser.save()
 
-      //criando o jwt para autenticacao
-      const accesstoken = createAccessToken({ id: newUser._id })
-      const refreshtoken = createRefreshToken({ id: newUser._id })
-
-      //cria um cookie para armazenar os dados
-      res.cookie('refreshtoken', refreshtoken, {
-        httpOnly: true,
-        path: '/user/refresh_token',
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
-      })
-
-      res.json({ msg: 'Cadastrado com Sucesso!' })
-    } catch (error) {
-      return res.status(500).json({ msg: error.message })
+      res.status(200).json({ msg: 'Cadastro realizado com sucesso!' })
+    } catch (err) {
+      return res.status(500).json({ err: err.message })
     }
   },
   // login usuario
   login: async (req, res) => {
     try {
-      //recupera os dados do body da requisicao
+      //pega os dados que foi digitado no front
       const { email, password } = req.body
 
-      //verifica no mongo se tem algum usuario com o email passado caso positivo quarda os dados completos na variavel
+      //verifica se acha no banco alguem com o email igual ao digitado
       const user = await Users.findOne({ email })
-      if (!user)
-        res.status(400).json({ msg: 'Usuario nao existe', title: 'error' })
+      if (!user) return res.status(400).json({ err: 'Usuario nao existe.' })
 
-      //verifica se a senha eh a mesma
+      //verifica se a senha digitada é igual ao do banco
       const isMatch = await bcrypt.compare(password, user.password)
-      if (!isMatch)
-        res.status(400).json({ msg: 'Senha incorreta', title: 'error' })
+      if (!isMatch) return res.status(400).json({ err: 'Senha incorreta.' })
 
-      //criando o jwt para autenticacao
-      const accesstoken = createAccessToken({ id: user._id })
-      const refreshtoken = createRefreshToken({ id: user._id })
+      //cria o token
+      const access_token = createAccessToken({ id: user._id })
+      //cria o refresh token
+      const refresh_token = createRefreshToken({ id: user._id })
 
-      //cria um cookie para armazenar os dados
-      res.cookie('refreshtoken', refreshtoken, {
-        httpOnly: true,
-        path: '/user/refresh_token',
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
-      })
-
+      //envia msg os tokens e o user com as informaçoes do banco
       res.json({
         msg: 'Logado com sucesso!',
-        accesstoken,
-        refreshtoken,
+        refresh_token,
+        access_token,
         user: {
           name: user.name,
           email: user.email,
           favorites: user.favorites,
         },
       })
-    } catch (error) {
-      res.status(500).json({ msg: error.message })
+    } catch (err) {
+      return res.status(500).json({ err: err.message })
     }
   },
   // logout usuario
@@ -96,24 +80,37 @@ const userCtrl = {
     }
   },
   //verifica token
-  refreshToken: (req, res) => {
+  refreshToken: async (req, res) => {
     try {
-      //recupera o token do cookie e verifica se existe
+      //verifica se existe um refreshtoken nos cookies
       const rf_token = req.cookies.refreshtoken
-      if (!rf_token)
-        return res.status(400).json({ msg: 'Logue ou cadastre-se' })
+      if (!rf_token) return res.status(400).json({ err: 'Logue Por Favor!' })
 
-      //compara se o token do cookie eh igual ao token do .env
-      jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-        if (err) return res.status(400).json({ msg: 'Logue ou cadastre-se' })
+      //verifica se o refreshtoken é igual ao refreshtoken do projeto
+      const result = jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET)
+      if (!result)
+        return res
+          .status(400)
+          .json({ err: 'Seu token esta incorreto ou expirado.' })
 
-        //cria o token
-        const accesstoken = createAccessToken({ id: user.id })
+      //verifica se acha no banco alguem com o id = ao id do result
+      const user = await Users.findById(result.id)
+      if (!user) return res.status(400).json({ err: 'Usuario nao existe.' })
 
-        res.json({ accesstoken })
+      //cria o token baseado no id do banco
+      const access_token = createAccessToken({ id: user._id })
+
+      //retorna o token e o user criado
+      res.json({
+        access_token,
+        user: {
+          name: user.name,
+          email: user.email,
+          favorites: user.favorites,
+        },
       })
-    } catch (error) {
-      return res.status(500).json({ msg: error.message })
+    } catch (err) {
+      return res.status(500).json({ err: err.message })
     }
   },
   //busca os usuarios
@@ -128,16 +125,6 @@ const userCtrl = {
       return res.status(500).json({ msg: error.message })
     }
   },
-}
-
-//metodo para criar o token que expira em 1 dia
-const createAccessToken = (user) => {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
-}
-
-//metodo que diz quando vai alterar o token ja existente que expira em 7 dias
-const createRefreshToken = (user) => {
-  return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' })
 }
 
 module.exports = userCtrl

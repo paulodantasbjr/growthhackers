@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { Toast } from '../Toast'
-import { DataContext } from '../../context/userContext/userState'
+import { DataContext } from '../../context/globalState'
 import Loading from '../Loading'
 
 export const Notify = () => {

@@ -1,8 +1,23 @@
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-import SignIn from './signin'
 import { Shop } from '../components/Shop'
 
 export default function Home() {
-  return <div>{!Cookie.get('refreshtoken') ? <SignIn /> : <Shop />}</div>
+  const router = useRouter()
+
+  useEffect(() => {
+    const token = Cookies.get('refreshtoken')
+
+    if (!token) {
+      router.replace('/signin')
+    }
+  }, [])
+
+  return (
+    <div>
+      <Shop />
+    </div>
+  )
 }
