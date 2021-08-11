@@ -90,6 +90,23 @@ const userCtrl = {
       return res.status(500).json({ err: err.message })
     }
   },
+  //cria a lista de favoritos
+  favorites: async (req, res) => {
+    try {
+      const { email, favorites } = req.body
+
+      const query = { email: email }
+
+      const newFavorites = { favorites }
+
+      Users.findOneAndUpdate(query, newFavorites, (err, data) => {
+        if (err) return res.status(400).json({ error: err.message })
+        if (data) return res.status(200).json({ msg: 'Salvo nos favoritos' })
+      })
+    } catch (err) {
+      return res.status(500).json({ err: err.message })
+    }
+  },
 }
 
 module.exports = userCtrl

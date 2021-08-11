@@ -12,11 +12,6 @@ export const reducers = (state, action) => {
         ...state,
         auth: action.payload,
       }
-    case actions.ADD_USERS:
-      return {
-        ...state,
-        users: action.payload,
-      }
     default:
       return state
   }

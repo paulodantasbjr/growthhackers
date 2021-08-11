@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import Link from 'next/link'
+import Cookie from 'js-cookie'
 import { useRouter } from 'next/router'
 import { Email, Lock, Person } from '@material-ui/icons/'
 
@@ -37,7 +38,7 @@ export default function SignIn() {
     if (res.err)
       return dispatch({ type: 'NOTIFY', payload: { error: res.err } })
 
-    router.push('/')
+    router.push('/signin')
     return dispatch({ type: 'NOTIFY', payload: { success: res.msg } })
   }
 

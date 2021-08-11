@@ -4,8 +4,14 @@ import { Layout } from '../../../styles/Layout'
 import { getProductData } from '../../../utils/fetchData'
 import { ProductCard } from '../../../components/ProductCard'
 import { CarsContainer } from './styled'
+import { addToFavorite } from '../../../context/actions'
+import { useContext } from 'react'
+import { DataContext } from '../../../context/globalState'
 
 export default function Cars(props) {
+  const { state, dispatch } = useContext(DataContext)
+  const { auth } = state
+
   return (
     <Layout>
       <CarsContainer>
@@ -16,7 +22,15 @@ export default function Cars(props) {
 
         <div className='cars-container'>
           {props.cars.map((item) => {
-            return <ProductCard key={item._id} item={item} />
+            return (
+              <ProductCard
+                key={item._id}
+                item={item}
+                addToFavorite={addToFavorite}
+                dispatch={dispatch}
+                auth={auth}
+              />
+            )
           })}
         </div>
       </CarsContainer>

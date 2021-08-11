@@ -33,7 +33,7 @@ export const CardContainer = styled.div`
         color: ${({ theme }) => theme.colors.primary};
       }
       h3 {
-        margin: 0 0 47px 38px;
+        margin: 0 0 47px 0;
         font-size: 13px;
         font-weight: 300;
         text-transform: uppercase;
@@ -48,6 +48,7 @@ export const CardContainer = styled.div`
         font-weight: 300;
         overflow: hidden;
         text-align: center;
+        padding: 1rem;
       }
     }
     .product-action {
