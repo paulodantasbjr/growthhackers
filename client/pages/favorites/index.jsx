@@ -9,14 +9,17 @@ export default function Favorites() {
   const { state, dispatch } = useContext(DataContext)
   const { auth } = state
   const { user } = auth
-  console.log(user)
+
+  useEffect(() => {
+    dispatch({ type: 'NOTIFY', payload: { loading: true } })
+  }, [user])
 
   return (
     <Layout>
       <FavoriteContainer>
-        {/* {user.favorites.map((item, i) => {
+        {user.favorites.map((item, i) => {
           return <FavoriteCard key={i} item={item} />
-        })} */}
+        })}
       </FavoriteContainer>
     </Layout>
   )
