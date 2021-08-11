@@ -62,17 +62,6 @@ const userCtrl = {
       return res.status(500).json({ err: err.message })
     }
   },
-  // logout usuario
-  logout: async (req, res) => {
-    try {
-      //limpar o cookie do navegador
-      res.clearCookie('refreshtoken', { path: '/user/refresh_token' })
-
-      return res.json({ msg: 'Feito logout' })
-    } catch (error) {
-      return res.json({ msg: error.message })
-    }
-  },
   //verifica token
   refreshToken: async (req, res) => {
     try {
@@ -99,18 +88,6 @@ const userCtrl = {
       })
     } catch (err) {
       return res.status(500).json({ err: err.message })
-    }
-  },
-  //busca os usuarios
-  getUser: async (req, res) => {
-    try {
-      //verifica no mongo se tem algum usuario com o id passado caso positivo quarda os dados completos na variavel - retornando sem o password
-      const user = await Users.findById(req.user.id).select('-password')
-      if (!user) return res.status(400).json({ msg: 'usuario nao existe' })
-
-      res.json(user)
-    } catch (error) {
-      return res.status(500).json({ msg: error.message })
     }
   },
 }

@@ -11,6 +11,10 @@ app.use(cors())
 
 // Routes
 app.use('/user', require('./routers/userRouter'))
+app.use('/products', require('./routers/productCarRouter'))
+app.use('/products', require('./routers/productHouseRouter'))
+app.use('/products', require('./routers/productCellPhoneRouter'))
+app.use('/products', require('./routers/productTravelRouter'))
 
 // Connect to mongodb
 const URI = process.env.MONGODB_URL

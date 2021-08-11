@@ -20,14 +20,18 @@ export const DataProvider = ({ children }) => {
       dispatch({ type: 'NOTIFY', payload: { loading: true } })
       const fetchData = async () => {
         const res = await getData('user/refresh_token', token)
-        if (res.err) return localStorage.removeItem('firstLogin')
-        dispatch({ type: 'NOTIFY', payload: {} })
         dispatch({
           type: 'AUTH',
           payload: {
             user: res.user,
           },
         })
+        dispatch({ type: 'NOTIFY', payload: {} })
+        if (res.err) {
+          localStorage.removeItem('firstLogin')
+          dispatch({ type: 'NOTIFY', payload: { error: err.msg } })
+          Cookies.remove('refreshtoken')
+        }
       }
       fetchData()
     }

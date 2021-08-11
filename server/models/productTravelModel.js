@@ -1,14 +1,8 @@
 const mongoose = require('mongoose')
 
 //colections que eh salvo no mongodb
-const productSchema = new mongoose.Schema(
+const productTravelSchema = new mongoose.Schema(
   {
-    product_id: {
-      type: String,
-      unique: true,
-      trim: true,
-      required: true,
-    },
     title: {
       type: String,
       trim: true,
@@ -18,8 +12,8 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    images: {
-      type: Object,
+    image: {
+      type: String,
       required: true,
     },
     category: {
@@ -39,4 +33,4 @@ const productSchema = new mongoose.Schema(
 )
 
 //funcao model espera o parametro 1 - nome da colection / 2 - o que sera salvo na colections
-module.exports = mongoose.model('Products', productSchema)
+module.exports = mongoose.model('TravelProducts', productTravelSchema)

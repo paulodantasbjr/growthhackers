@@ -14,6 +14,9 @@ export const ProfileContainer = styled.div`
     }
   }
   .left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     p {
       font-size: 1rem;
       line-height: 2rem;
@@ -29,6 +32,15 @@ export const ProfileContainer = styled.div`
             color: ${({ theme }) => theme.colors.secondary};
           }
         }
+      }
+    }
+    button {
+      background: none;
+      border: none;
+      color: ${({ theme }) => theme.colors.primary};
+      &:hover {
+        text-decoration: underline;
+        color: ${({ theme }) => theme.colors.secondary};
       }
     }
   }

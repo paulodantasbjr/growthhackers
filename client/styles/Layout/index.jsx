@@ -9,8 +9,12 @@ import {
 import { Nav } from '../../components/Nav'
 import { Profile } from '../../components/Profile'
 import { Logo } from '../../components/Logo'
+import { useContext } from 'react'
+import { DataContext } from '../../context/globalState'
 
 export const Layout = ({ children }) => {
+  const { state, dispatch } = useContext(DataContext)
+  const { auth } = state
   return (
     <LayoutContainer>
       <HeaderContainer>
@@ -19,8 +23,8 @@ export const Layout = ({ children }) => {
         </div>
 
         <div className='rigth-container'>
-          <Nav />
-          <Profile />
+          <Nav auth={auth} />
+          <Profile auth={auth} dispatch={dispatch} />
         </div>
       </HeaderContainer>
       <MainContainer>{children}</MainContainer>
