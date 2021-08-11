@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
   ul {
     display: flex;
     justify-content: center;

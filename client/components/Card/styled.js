@@ -7,6 +7,9 @@ export const CardContainer = styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 520px) {
+    width: 300px;
+  }
   .card-img {
     height: 150px;
     width: 100%;
@@ -23,6 +26,7 @@ export const CardContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+    background: ${({ theme }) => theme.colors.backgroundLight};
     padding: 1rem;
     .card-title {
       h3 {
@@ -31,12 +35,16 @@ export const CardContainer = styled.div`
         text-transform: uppercase;
         letter-spacing: 0.5rem;
         color: ${({ theme }) => theme.colors.secondary};
+        @media screen and (max-width: 520px) {
+          font-size: 1rem;
+          letter-spacing: 0.2rem;
+        }
       }
     }
     .card-description {
       p {
         line-height: 1.2rem;
-        font-size: 15px;
+        font-size: 1rem;
         font-weight: 300;
         overflow: hidden;
         text-align: justify;
@@ -57,6 +65,10 @@ export const CardContainer = styled.div`
         &:hover {
           color: ${({ theme }) => theme.colors.primary};
           text-decoration: underline;
+        }
+        @media screen and (max-width: 520px) {
+          font-size: 0.8rem;
+          font-weight: 600;
         }
       }
     }

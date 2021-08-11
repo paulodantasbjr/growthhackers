@@ -5,6 +5,9 @@ export const ProfileContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
   .right-container {
     width: 3rem;
     height: 3rem;

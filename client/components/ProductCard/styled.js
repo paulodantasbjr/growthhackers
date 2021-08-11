@@ -5,6 +5,10 @@ export const CardContainer = styled.div`
   width: 350px;
   border-radius: 5px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  background: ${({ theme }) => theme.colors.backgroundLight};
+  @media screen and (max-width: 520px) {
+    height: 350px;
+  }
   .card-img {
     width: 350px;
     height: 50%;
@@ -26,6 +30,8 @@ export const CardContainer = styled.div`
     text-transform: uppercase;
     margin: 0.5rem 0;
     font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5rem;
     color: ${({ theme }) => theme.colors.primary};
   }
   .card-description {

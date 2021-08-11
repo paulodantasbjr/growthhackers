@@ -4,6 +4,26 @@ export const LayoutContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   background: ${({ theme }) => theme.colors.background};
+  .container-hamburguer {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    background: ${({ theme }) => theme.colors.backgroundLight};
+    border-radius: 5px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    display: none;
+    @media screen and (max-width: 520px) {
+      display: block;
+    }
+    button {
+      padding: 0;
+      margin: 0;
+    }
+    svg {
+      font-size: 2rem;
+    }
+  }
 `
 
 export const HeaderContainer = styled.header`
@@ -15,14 +35,14 @@ export const HeaderContainer = styled.header`
   justify-content: space-around;
   align-items: center;
   @media screen and (max-width: 520px) {
-    display: none;
+    height: 4rem;
+    justify-content: space-between;
   }
   .left-container {
     margin: 1rem;
   }
   .rigth-container {
     margin: 1rem;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +59,6 @@ export const MainContainer = styled.main`
   background: ${({ theme }) => theme.colors.background};
   @media screen and (max-width: 520px) {
     width: 100%;
-    height: 100vh;
     padding: 1rem;
   }
 `
@@ -52,7 +71,7 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 520px) {
-    display: none;
+    height: 4rem;
   }
   span {
     font-size: 1rem;

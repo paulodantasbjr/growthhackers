@@ -16,7 +16,7 @@ export const FavoriteCard = ({ item }) => {
             <p>{item.description}</p>
           </div>
           <div className='product-action'>
-            <Button>Desfavoritar</Button>
+            <Button>excluir</Button>
           </div>
         </div>
       </>

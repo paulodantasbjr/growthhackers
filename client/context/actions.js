@@ -6,7 +6,6 @@ export const actions = {
 }
 
 export const addToFavorite = async (item, user, dispatch) => {
-  console.log(item)
   const newFavorites = {
     category: item.category,
     checked: true,

@@ -3,11 +3,18 @@ import styled from 'styled-components'
 export const CellPhoneContainer = styled.div`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   .input-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 3rem;
+    @media screen and (max-width: 520px) {
+      margin-bottom: 1rem;
+    }
     input {
       background: ${({ theme }) => theme.colors.backgroundLight};
       width: 500px;
@@ -19,6 +26,10 @@ export const CellPhoneContainer = styled.div`
       padding: 0.5rem 2rem;
       border: none;
       outline: 0;
+      @media screen and (max-width: 520px) {
+        width: 300px;
+        height: 50px;
+      }
     }
     svg {
       cursor: pointer;
@@ -35,7 +46,10 @@ export const CellPhoneContainer = styled.div`
   }
   .cellphone-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    @media screen and (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
   }
 `
