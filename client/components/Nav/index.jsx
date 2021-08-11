@@ -14,7 +14,7 @@ export const Nav = ({ auth }) => {
             <a className={router.pathname == '/' ? 'active' : ''}>Inicio</a>
           </Link>
         </li>
-        {!auth && (
+        {auth.user && (
           <li>
             <Link href='/favorites'>
               <a className={router.pathname == '/favorites' ? 'active' : ''}>

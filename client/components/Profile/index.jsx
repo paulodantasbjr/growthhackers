@@ -12,22 +12,21 @@ export const Profile = ({ auth, dispatch }) => {
     Cookies.remove('refreshtoken', { path: 'user/refresh_token' })
     localStorage.removeItem('firstLogin')
     dispatch({ type: 'AUTH', payload: {} })
-    dispatch({ type: 'NOTIFY', payload: { success: 'Desconectado!' } })
+    dispatch({ type: 'NOTIFY', payload: { info: 'Desconectado!' } })
     return router.push('/')
   }
 
   return (
     <ProfileContainer>
-      {!auth ? (
+      {!auth.user ? (
         <div className='left-container'>
           <p>
-            Faca
+            Faça
             <span>
               <Link href='/signin'>
                 <a> login </a>
               </Link>
             </span>
-            para continuar
           </p>
         </div>
       ) : (
