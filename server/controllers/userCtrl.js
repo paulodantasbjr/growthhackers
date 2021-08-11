@@ -37,23 +37,17 @@ const userCtrl = {
   // login usuario
   login: async (req, res) => {
     try {
-      //pega os dados que foi digitado no front
       const { email, password } = req.body
 
-      //verifica se acha no banco alguem com o email igual ao digitado
       const user = await Users.findOne({ email })
-      if (!user) return res.status(400).json({ err: 'Usuario nao existe.' })
+      if (!user) return res.status(400).json({ err: 'Usuário não existe.' })
 
-      //verifica se a senha digitada é igual ao do banco
       const isMatch = await bcrypt.compare(password, user.password)
       if (!isMatch) return res.status(400).json({ err: 'Senha incorreta.' })
 
-      //cria o token
       const access_token = createAccessToken({ id: user._id })
-      //cria o refresh token
       const refresh_token = createRefreshToken({ id: user._id })
 
-      //envia msg os tokens e o user com as informaçoes do banco
       res.json({
         msg: 'Logado com sucesso!',
         refresh_token,
@@ -82,25 +76,19 @@ const userCtrl = {
   //verifica token
   refreshToken: async (req, res) => {
     try {
-      //verifica se existe um refreshtoken nos cookies
-      const rf_token = req.cookies.refreshtoken
-      if (!rf_token) return res.status(400).json({ err: 'Logue Por Favor!' })
+      const rf_token = req.headers.token
+      if (!rf_token) return res.status(400).json({ err: 'Por favor logue!' })
 
-      //verifica se o refreshtoken é igual ao refreshtoken do projeto
       const result = jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET)
       if (!result)
         return res
           .status(400)
-          .json({ err: 'Seu token esta incorreto ou expirado.' })
+          .json({ err: 'Seu token esta expirado ou incorreto.' })
 
-      //verifica se acha no banco alguem com o id = ao id do result
       const user = await Users.findById(result.id)
-      if (!user) return res.status(400).json({ err: 'Usuario nao existe.' })
+      if (!user) return res.status(400).json({ err: 'Usuário não existe.' })
 
-      //cria o token baseado no id do banco
       const access_token = createAccessToken({ id: user._id })
-
-      //retorna o token e o user criado
       res.json({
         access_token,
         user: {

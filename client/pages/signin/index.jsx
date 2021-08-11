@@ -46,11 +46,11 @@ export default function SignIn() {
 
     Cookie.set('refreshtoken', res.refresh_token, {
       path: 'user/refresh_token',
+      httpOnly: false,
       expires: 7,
     })
 
     localStorage.setItem('firstLogin', true)
-    router.push('/')
   }
 
   useEffect(() => {
