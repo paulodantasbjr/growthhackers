@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import { CardContainer } from './styled'
-import { Button } from '../LinkButton'
 
 export const Card = ({ title, img, description, href }) => {
   return (
@@ -9,12 +8,18 @@ export const Card = ({ title, img, description, href }) => {
       <div className='card-img'>
         <img src={img} alt={title} />
       </div>
-      <h3>{title}</h3>
-      <div className='card-description'>{description}</div>
-      <div className='card-actions'>
-        <Link href={href} passHref>
-          <Button />
-        </Link>
+      <div className='card-body'>
+        <div className='card-title'>
+          <h3>{title}</h3>
+        </div>
+        <div className='card-description'>
+          <p>{description}</p>
+        </div>
+        <div className='card-actions'>
+          <Link href={href} passHref>
+            <a>entrar</a>
+          </Link>
+        </div>
       </div>
     </CardContainer>
   )

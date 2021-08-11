@@ -9,9 +9,16 @@ export const SignInContainer = styled.main`
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  @media screen and (max-width: 520px) {
+    padding: 1.5rem;
+  }
   h1 {
     font-size: 3rem;
     line-height: 3rem;
+    @media screen and (max-width: 520px) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
   }
   form {
     background: ${({ theme }) => theme.colors.backgroundLight};
@@ -19,9 +26,11 @@ export const SignInContainer = styled.main`
     max-width: 480px;
     border-radius: 5px;
     padding: 3rem;
-
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 520px) {
+      padding: 1rem;
+    }
   }
   section {
     background: ${({ theme }) => theme.colors.backgroundLight};

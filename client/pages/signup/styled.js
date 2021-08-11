@@ -9,9 +9,16 @@ export const SignUpContainer = styled.main`
   align-items: center;
   min-height: 100vh;
   width: 100%;
+  @media screen and (max-width: 520px) {
+    padding: 1.5rem;
+  }
   h1 {
     font-size: 3rem;
     line-height: 3rem;
+    @media screen and (max-width: 520px) {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
   }
   form {
     width: 100%;
@@ -19,9 +26,11 @@ export const SignUpContainer = styled.main`
     background: ${({ theme }) => theme.colors.backgroundLight};
     border-radius: 5px;
     padding: 3rem;
-
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 520px) {
+      padding: 1rem;
+    }
   }
   section {
     display: grid;

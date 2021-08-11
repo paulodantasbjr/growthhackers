@@ -1,11 +1,11 @@
+import { useContext } from 'react'
 import { Search } from '@material-ui/icons/'
 
+import { CarsContainer } from './styled'
 import { Layout } from '../../../styles/Layout'
 import { getProductData } from '../../../utils/fetchData'
 import { ProductCard } from '../../../components/ProductCard'
-import { CarsContainer } from './styled'
-import { addToFavorite } from '../../../context/actions'
-import { useContext } from 'react'
+import { addToFavorite, RemoveToFavorite } from '../../../context/actions'
 import { DataContext } from '../../../context/globalState'
 
 export default function Cars(props) {
@@ -27,6 +27,7 @@ export default function Cars(props) {
                 key={item._id}
                 item={item}
                 addToFavorite={addToFavorite}
+                RemoveToFavorite={RemoveToFavorite}
                 dispatch={dispatch}
                 auth={auth}
               />

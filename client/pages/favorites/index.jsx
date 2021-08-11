@@ -6,18 +6,13 @@ import { FavoriteCard } from '../../components/FavoriteCard'
 import { DataContext } from '../../context/globalState'
 
 export default function Favorites() {
-  const { state, dispatch } = useContext(DataContext)
+  const { state } = useContext(DataContext)
   const { auth } = state
-  const { user } = auth
-
-  useEffect(() => {
-    dispatch({ type: 'NOTIFY', payload: { loading: true } })
-  }, [user])
 
   return (
     <Layout>
       <FavoriteContainer>
-        {user.favorites.map((item, i) => {
+        {auth.user?.favorites.map((item, i) => {
           return <FavoriteCard key={i} item={item} />
         })}
       </FavoriteContainer>

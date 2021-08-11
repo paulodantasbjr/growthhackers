@@ -33,7 +33,7 @@ export const CardContainer = styled.div`
         color: ${({ theme }) => theme.colors.primary};
       }
       h3 {
-        margin: 0 0 47px 0;
+        margin-right: 45px;
         font-size: 13px;
         font-weight: 300;
         text-transform: uppercase;

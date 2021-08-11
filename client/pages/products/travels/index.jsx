@@ -1,11 +1,16 @@
 import { Search } from '@material-ui/icons/'
+import { useContext } from 'react'
 
 import { Layout } from '../../../styles/Layout'
 import { getProductData } from '../../../utils/fetchData'
 import { ProductCard } from '../../../components/ProductCard'
+import { addToFavorite, RemoveToFavorite } from '../../../context/actions'
 import { TravelContainer } from './styled'
+import { DataContext } from '../../../context/globalState'
 
 export default function Travel(props) {
+  const { state, dispatch } = useContext(DataContext)
+  const { auth } = state
   return (
     <Layout>
       <TravelContainer>
@@ -16,7 +21,16 @@ export default function Travel(props) {
 
         <div className='travel-container'>
           {props.travels.map((item) => {
-            return <ProductCard key={item._id} item={item} />
+            return (
+              <ProductCard
+                key={item._id}
+                item={item}
+                addToFavorite={addToFavorite}
+                RemoveToFavorite={RemoveToFavorite}
+                dispatch={dispatch}
+                auth={auth}
+              />
+            )
           })}
         </div>
       </TravelContainer>

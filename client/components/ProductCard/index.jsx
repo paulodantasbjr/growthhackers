@@ -2,7 +2,13 @@ import { CardContainer } from './styled'
 import { IconButton } from '@material-ui/core/'
 import { Favorite, NotInterested } from '@material-ui/icons/'
 
-export const ProductCard = ({ item, addToFavorite, dispatch, auth }) => {
+export const ProductCard = ({
+  item,
+  addToFavorite,
+  RemoveToFavorite,
+  dispatch,
+  auth,
+}) => {
   return (
     <CardContainer>
       <div className='card-img'>
@@ -17,11 +23,19 @@ export const ProductCard = ({ item, addToFavorite, dispatch, auth }) => {
           <span>
             Categoria: <p>{item.category}</p>
           </span>
-          {auth.user && (
+          {auth.user ? (
             <IconButton
               onClick={() => dispatch(addToFavorite(item, auth.user, dispatch))}
             >
-              {!item.checked ? <Favorite /> : <NotInterested />}
+              <Favorite />
+            </IconButton>
+          ) : (
+            <IconButton
+              onClick={() =>
+                dispatch(RemoveToFavorite(item, auth.user, dispatch))
+              }
+            >
+              <NotInterested />
             </IconButton>
           )}
         </div>

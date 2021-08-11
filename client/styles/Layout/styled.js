@@ -11,10 +11,12 @@ export const HeaderContainer = styled.header`
   height: 5rem;
   background: ${({ theme }) => theme.colors.backgroundLight};
   box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2);
-
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
   .left-container {
     margin: 1rem;
   }
@@ -35,6 +37,11 @@ export const MainContainer = styled.main`
   padding: 4rem;
   margin: 0 auto;
   background: ${({ theme }) => theme.colors.background};
+  @media screen and (max-width: 520px) {
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+  }
 `
 
 export const FooterContainer = styled.footer`
@@ -44,6 +51,9 @@ export const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
   span {
     font-size: 1rem;
     font-weight: 600;

@@ -1,4 +1,4 @@
-import { postProductData } from '../utils/fetchData'
+import { postProductData, deleteData } from '../utils/fetchData'
 
 export const actions = {
   NOTIFY: 'NOTIFY',
@@ -6,6 +6,7 @@ export const actions = {
 }
 
 export const addToFavorite = async (item, user, dispatch) => {
+  console.log(item)
   const newFavorites = {
     category: item.category,
     checked: true,
@@ -22,4 +23,7 @@ export const addToFavorite = async (item, user, dispatch) => {
   if (res.err) return dispatch({ type: 'NOTIFY', payload: { error: res.err } })
 
   dispatch({ type: 'NOTIFY', payload: { success: res.msg } })
+}
+export const RemoveToFavorite = async (item, user, dispatch) => {
+  //TODO
 }

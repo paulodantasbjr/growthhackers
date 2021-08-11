@@ -1,11 +1,17 @@
+import { useContext } from 'react'
 import { Search } from '@material-ui/icons/'
 
 import { Layout } from '../../../styles/Layout'
 import { getProductData } from '../../../utils/fetchData'
 import { ProductCard } from '../../../components/ProductCard'
+import { addToFavorite, RemoveToFavorite } from '../../../context/actions'
+import { DataContext } from '../../../context/globalState'
 import { CellPhoneContainer } from './styled'
 
 export default function CellPhones(props) {
+  const { state, dispatch } = useContext(DataContext)
+  const { auth } = state
+
   return (
     <Layout>
       <CellPhoneContainer>
@@ -16,7 +22,16 @@ export default function CellPhones(props) {
 
         <div className='cellphone-container'>
           {props.cellphones.map((item) => {
-            return <ProductCard key={item._id} item={item} />
+            return (
+              <ProductCard
+                key={item._id}
+                item={item}
+                addToFavorite={addToFavorite}
+                RemoveToFavorite={RemoveToFavorite}
+                dispatch={dispatch}
+                auth={auth}
+              />
+            )
           })}
         </div>
       </CellPhoneContainer>
