@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import MenuIcon from '@material-ui/icons/Menu'
 import IconButton from '@material-ui/core/IconButton'
 
@@ -17,15 +17,10 @@ import { DataContext } from '../../context/globalState'
 export const Layout = ({ children }) => {
   const { state, dispatch } = useContext(DataContext)
   const { auth } = state
+
   return (
     <LayoutContainer>
       <HeaderContainer>
-        <div className='container-hamburguer'>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-        </div>
-
         <div className='left-container'>
           <Logo />
         </div>

@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 export const NavContainer = styled.nav`
   @media screen and (max-width: 520px) {
-    display: none;
+    position: absolute;
+    top: 25px;
+    left: 10px;
   }
   ul {
     display: flex;
@@ -15,6 +17,11 @@ export const NavContainer = styled.nav`
       font-weight: 600;
       text-transform: uppercase;
       transition: all 0.4s ease-in-out;
+      @media screen and (max-width: 520px) {
+        font-size: 0.8rem;
+        line-height: 1rem;
+        font-weight: 400;
+      }
       .active {
         color: ${({ theme }) => theme.colors.primary};
       }

@@ -4,6 +4,7 @@ export const LayoutContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   background: ${({ theme }) => theme.colors.background};
+
   .container-hamburguer {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     background: ${({ theme }) => theme.colors.backgroundLight};
@@ -23,6 +24,14 @@ export const LayoutContainer = styled.div`
     svg {
       font-size: 2rem;
     }
+  }
+  .menu-hamburguer {
+    position: absolute;
+    top: 4.2rem;
+    right: 0;
+    width: 200px;
+    height: 300px;
+    background: ${({ theme }) => theme.colors.backgroundLight};
   }
 `
 
