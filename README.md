@@ -47,15 +47,15 @@ Projeto feito em dois dias para a aprocao da empresa [GrowthHackers](https://gro
 - Usando boas praticas de acessibilidade e codigo limpo.
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="Login Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/login_page.PNG" width="300px" height="300px">
+  <img alt="Login Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/login_page.PNG" width="400px" height="400px">
 
-  <img alt="Register Page" src="hhttps://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/register_page.PNG" width="300px" height="300px">
+  <img alt="Register Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/register_page.PNG" width="400px" height="400px">
 
-  <img alt="Product Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/product_page.PNG" width="300px" height="300px">
+  <img alt="Product Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/product_page.PNG" width="400px" height="400px">
 
-  <img alt="Favorite Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/favorite_page.PNG" width="300px" height="300px">
+  <img alt="Favorite Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/favorite_page.PNG" width="400px" height="400px">
 
-  <img alt="Home Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/home_page.PNG" width="300px" height="300px">
+  <img alt="Home Page" src="https://github.com/paulodantasrj/growthhackers/blob/main/client/public/assets/readme/home_page.PNG" width="400px" height="400px">
 </p>
 
 ### Built With
