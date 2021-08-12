@@ -84,10 +84,10 @@ Instalar o [NodeJS](https://nodejs.org/en/) e o [Visual Studio Code](https://cod
    ```
 3. Para configurar as variaveis de ambiente envie um email para paulorobertosjm@gmail.com ou crie a sua
    ```JS
-   PORT = 'ENTER YOUR API';
-   MONGODB_URL = 'ENTER YOUR API';
-   ACCESS_TOKEN_SECRET = 'ENTER YOUR API';
-   REFRESH_TOKEN_SECRET = 'ENTER YOUR API';
+   PORT = 'ENTER YOUR KEY';
+   MONGODB_URL = 'ENTER YOUR KEY';
+   ACCESS_TOKEN_SECRET = 'ENTER YOUR KEY';
+   REFRESH_TOKEN_SECRET = 'ENTER YOUR KEY';
    ```
 
 <!-- USAGE EXAMPLES -->
@@ -95,6 +95,24 @@ Instalar o [NodeJS](https://nodejs.org/en/) e o [Visual Studio Code](https://cod
 ## Usage
 
 ### FrontEnd
+
+- Roda na porta 3000
+  ```sh
+  http://localhost:3000/
+  ```
+- Rotas disponíveis:
+
+  ```sh
+  http://localhost:3000/signin
+  ```
+
+  ```sh
+  http://localhost:3000/signup
+  ```
+
+  ```sh
+  http://localhost:3000/products/ - cars/cellphones/travels/houses
+  ```
 
 - Possue uma area principal com com quatro tipos de API para consumir (CARRO, CASA, CELULAR, VIAGEM).
 - Ao clicar em uma é direcionada para uma lista com os itens especificos de casa
@@ -105,25 +123,31 @@ Instalar o [NodeJS](https://nodejs.org/en/) e o [Visual Studio Code](https://cod
 
 ### BackEnd
 
-- É possivel cadastrar novos produtos.
-- Cada produto possui rota propria.
-- Execute o servidor e acesse:
+- Roda na porta 5000
   ```sh
   http://localhost:5000/
   ```
+- É possivel cadastrar novos produtos.
+- Cada produto possui rota propria.
+- Execute o servidor e acesse por algum API client ex: Postman, Insomnia etc
 - Rotas disponíveis:
+
   ```sh
   http://localhost:5000/products/create/car
   ```
+
   ```sh
   http://localhost:5000/products/create/house
   ```
+
   ```sh
   http://localhost:5000/products/create/cellphone
   ```
+
   ```sh
   http://localhost:5000/products/create/travel
   ```
+
   <!-- LICENSE -->
 
 ## License
@@ -147,4 +171,5 @@ Portifolio : [https://portfolio-paulodantasrj.vercel.app/](https://portfolio-pau
 - Testes usando JEST
 - Implementar a função para não conseguir favoritar o mesmo item
 - Implementar a função de remover o item do favorito
-- Implementar no FrontEnd o input de busca (o Back End ja esta filtrando por nome e categoria e API)
+- Implementar no FrontEnd o input de busca (o Back End ja esta filtrando por nome e categoria)
+- Implementar no FrontEnd paginaçao ( o back end ja esta trazendo a paginação de ate 6 produtos - pode ser visto em viagem que possie 7 produtos mas so mostra 6)
