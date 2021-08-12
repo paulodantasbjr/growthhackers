@@ -6,8 +6,6 @@ export const ListAppContainer = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%;
-  @media screen and (max-width: 520px) {
-  }
 
   .content {
     display: grid;

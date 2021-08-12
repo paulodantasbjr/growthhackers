@@ -1,6 +1,7 @@
-import { CardContainer } from './styled'
 import { IconButton } from '@material-ui/core/'
-import { Favorite, NotInterested } from '@material-ui/icons/'
+import { Favorite } from '@material-ui/icons/'
+
+import { CardContainer } from './styled'
 
 export const ProductCard = ({
   item,

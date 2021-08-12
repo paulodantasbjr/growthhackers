@@ -1,4 +1,5 @@
 import { Alert } from '@material-ui/lab'
+
 import { ToastStyled } from './styled'
 
 export const Toast = ({ info, handleClose }) => {

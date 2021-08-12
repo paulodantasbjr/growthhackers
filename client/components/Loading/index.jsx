@@ -1,4 +1,5 @@
 import ContentLoader from 'react-content-loader'
+
 import { LoadingStyled } from './styled'
 
 export const Loading = () => {

@@ -1,7 +1,8 @@
+import Cookies from 'js-cookie'
 import { createContext, useReducer, useEffect } from 'react'
+
 import { reducers } from './reducers'
 import { getData } from '../utils/fetchData'
-import Cookies from 'js-cookie'
 
 export const DataContext = createContext()
 

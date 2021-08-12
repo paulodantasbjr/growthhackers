@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react'
 import Cookies from 'js-cookie'
+import { useContext, useEffect } from 'react'
 
 import { Layout } from '../../styles/Layout'
 import { FavoriteContainer } from './styled'

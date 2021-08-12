@@ -49,14 +49,3 @@ export const postProductData = async (url, post) => {
 
   return data
 }
-export const deleteData = async (url) => {
-  const res = await fetch(`http://localhost:5000/${url}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-
-  const data = await res.json()
-  return data
-}

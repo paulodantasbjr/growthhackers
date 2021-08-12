@@ -2,7 +2,6 @@ import { CardContainer } from './styled'
 import { Button } from '../Button'
 
 export const FavoriteCard = ({ item }) => {
-  console.log(item)
   return (
     <CardContainer>
       <>

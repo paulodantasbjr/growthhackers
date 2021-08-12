@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-
 import Cookies from 'js-cookie'
+import { useRouter } from 'next/router'
 
 import { ProfileContainer } from './styled'
 
