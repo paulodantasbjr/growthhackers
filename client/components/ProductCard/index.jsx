@@ -23,19 +23,11 @@ export const ProductCard = ({
           <span>
             Categoria: <p>{item.category}</p>
           </span>
-          {auth.user ? (
+          {auth.user && (
             <IconButton
               onClick={() => dispatch(addToFavorite(item, auth.user, dispatch))}
             >
               <Favorite />
-            </IconButton>
-          ) : (
-            <IconButton
-              onClick={() =>
-                dispatch(RemoveToFavorite(item, auth.user, dispatch))
-              }
-            >
-              <NotInterested />
             </IconButton>
           )}
         </div>
