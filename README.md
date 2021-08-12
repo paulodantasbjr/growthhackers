@@ -7,7 +7,7 @@
   <p align="center">
     Projeto para a posição de desenvolvedor full stack
     <br />
-    <a href="https://portfolio-paulodantasrj.vercel.app/"><strong>Portifolio Paulo Dantas »</strong></a>
+    <a href="https://portfolio-paulodantasrj.vercel.app/"><strong>Paulo Dantas »</strong></a>
     <br />
     <br />
   </p>
